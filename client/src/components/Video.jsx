@@ -6,7 +6,7 @@ export const Video = ({stream}) => {
         if (videoRef && videoRef.current) {
             videoRef.current.srcObject = stream;
         }
-      }, [videoRef])
+      }, [videoRef, stream])
     
       return (
         <div>
