@@ -115,8 +115,5 @@ export function MeetingPage() {
         <Grid item xs={12} md={6} lg={4}>
             <Video stream={videoStream} />
         </Grid>
-        <Grid item xs={12} md={6} lg={4}>
-            <Video stream={remoteVideoStream} />
-        </Grid>
     </Grid>
 }
