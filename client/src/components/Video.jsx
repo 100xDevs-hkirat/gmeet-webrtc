@@ -8,7 +8,7 @@ export const Video = ({ stream, tracks }) => {
     if (videoRef && videoRef.current) {
       if (stream) {
         videoRef.current.srcObject = stream;
-      } else if (tracks.length > 0) {
+      } else if (tracks && tracks.length > 0) {
         // Create a new MediaStream with all remote tracks
         const remoteStream = new MediaStream(tracks);
         videoRef.current.srcObject = remoteStream;
