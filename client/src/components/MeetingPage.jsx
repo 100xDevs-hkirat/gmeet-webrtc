@@ -17,7 +17,7 @@ export function MeetingPage() {
     const [meetingJoined, setMeetingJoined] = useState(false);
     const [videoStream, setVideoStream] = useState();
     const [remoteVideoStream, setRemoteVideoStream] = useState();
-    const [_,forceRender] = useState(null)
+
     
     const params = useParams();
     const roomId = params.roomId;
@@ -43,7 +43,7 @@ export function MeetingPage() {
           pc.setRemoteDescription(description);
           pc.ontrack = (e) => {
               setRemoteVideoStream(new MediaStream([e.track]));
-              forceRender()
+          
           };
 
           s.on("iceCandidate", ({ candidate }) => {
