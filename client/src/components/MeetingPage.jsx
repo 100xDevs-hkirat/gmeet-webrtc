@@ -42,7 +42,7 @@ export function MeetingPage() {
                 pc.setRemoteDescription(description);
                 pc.ontrack = (e) => {
                     setRemoteVideoStream(new MediaStream([e.track]))
-                    setRemoteTracks((prevTracks) => [...prevTracks, e.track]);
+                    setRemoteTracks((prevTracks) => [...(prevTracks ?? []), e.track]);
                 }
 
                 s.on("iceCandidate", ({ candidate }) => {
