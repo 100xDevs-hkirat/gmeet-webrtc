@@ -41,11 +41,10 @@ export function MeetingPage() {
 
         s.on("localDescription", async ({ description }) => {
           // Receiving video -
-            console.log({description})
+          console.log({ description });
           pc.setRemoteDescription(description);
           pc.ontrack = (e) => {
-              setRemoteVideoStream(new MediaStream([e.track]));
-          
+            setRemoteVideoStream(new MediaStream([e.track]));
           };
 
           s.on("iceCandidate", ({ candidate }) => {
@@ -55,6 +54,7 @@ export function MeetingPage() {
           pc.onicecandidate = ({ candidate }) => {
             s.emit("iceCandidateReply", { candidate });
           };
+          await pc.setLocalDescription(await pc.createAnswer());
           s.emit("remoteDescription", { description: pc.localDescription });
         });
           s.on("remoteDescription", async ({ description }) => {
@@ -73,7 +73,7 @@ export function MeetingPage() {
               s.emit("iceCandidateReply", { candidate });
             };
 
-            //   await pc.setLocalDescription(await pc.createAnswer());
+         
             //s.emit("remoteDescription", { description: pc.localDescription });
           });
       });
